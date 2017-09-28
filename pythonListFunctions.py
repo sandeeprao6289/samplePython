@@ -130,7 +130,7 @@ def getPrimeNumber():
 	l1 = [x for x in range(1,100) if isPrime(x)]
 	print l1
 
-getPrimeNumber()
+#getPrimeNumber()
 
 def square(i):
 	return i *i
@@ -178,5 +178,20 @@ def check():
 	print id(alist)
 	print alist
 
-check()
-print alist
+#check()
+
+
+def sortingList():
+	l1 = [20,73,10,21,87,5]
+	print l1
+
+	for i in range(0,len(l1)-1):
+		for j in range(i+1,len(l1)):
+			print l1[i],"+++",l1[j]
+			if l1[i]>l1[j]:
+				l1[j],l1[i]=l1[i],l1[j]
+
+	print l1
+
+
+sortingList()
