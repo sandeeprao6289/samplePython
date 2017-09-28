@@ -55,7 +55,6 @@ def createDictInList():
 
 def createFibonacci(n):
 	l1 = [fib(x) for x in range(n)]
-
 	print l1
 
 def fib(n):
@@ -119,4 +118,65 @@ def copyList():
 	list object including the compound objects inside the list'''
 	print l3 #op [1, 10, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [10, 12, 14, 16, 18]]
 
-copyList()
+def isPrime(x):
+	if x >1:
+		for i in range(2,x):
+			if (x % i) == 0:
+				break
+		else:
+			return x
+
+def getPrimeNumber():
+	l1 = [x for x in range(1,100) if isPrime(x)]
+	print l1
+
+getPrimeNumber()
+
+def square(i):
+	return i *i
+
+def cube(i):
+	return i*i*i
+
+func = [cube,square]
+def testMapAndLambda():
+	l = [i for i in xrange(1,8)]
+	l2 = [map(cube,l)]
+
+	l1 = [map(lambda x:x(i),func) for i in range(1,8)]
+
+	l3 = [[cube(i),square(i)] for i in range(1,8)]
+	print l1 #op [[1, 1], [8, 4], [27, 9], [64, 16], [125, 25], [216, 36], [343, 49]]
+	print l2 #op [[1, 8, 27, 64, 125, 216, 343]]
+	print l3 #op [[1, 1], [8, 4], [27, 9], [64, 16], [125, 25], [216, 36], [343, 49]]
+
+
+from functools import reduce
+def testReduceAndFilter():
+	l = [1,5,8,9]
+	cl = list(filter(lambda x: x in l, range(1, 20)))
+	cproduct = reduce((lambda x,y: x * y ), cl)
+
+	sl = list(filter(lambda x: x > 10, range(1, 20)))
+	sproduct = reduce((lambda x,y: x * y ), sl)
+
+	print cl #op [1, 5, 8, 9]
+	print cproduct #op 360
+
+	print sl #op [11, 12, 13, 14, 15, 16, 17, 18, 19]
+	print sproduct #op 33522128640
+
+#testReduceAndFilter()
+
+alist = [1,2,3]
+
+def check():
+	print id(alist)
+	print alist
+	alist = {1:3}
+	b = {1:4}
+	print id(alist)
+	print alist
+
+check()
+print alist
