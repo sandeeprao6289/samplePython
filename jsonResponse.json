@@ -1,0 +1,94 @@
+Request: GET_VALIDATION_INFORMATION (
+	//Input Params: 
+	selectedSystem: System,
+	selectedInputFeed: InputFeed,
+	selectedCOBDate: string //format YYYYMMDD
+)
+
+Sample Response: Validation information of that specific system, input feed, cob date selected. 
+
+{
+  "system": {
+    "name": "DWH",
+    "inputfeeds": {
+      "name": "TL_Report",
+      "cobDate": "20180520",
+      "attributes": [
+					{
+                        "key": "Note Number",
+                        "value": "30000866"
+                    },
+                    {
+                        "key": "Effective",
+                        "value": "20170703"
+                    },
+                    {
+                        "key": "Maturity",
+                        "value": "20190703"
+                    },
+                    {
+                        "key": "Day Count",
+                        "value": "ACT360"
+                    },
+                    {
+                        "key": "Calendar",
+                        "value": "NYB"
+                    },
+                    {
+                        "key": "IO",
+                        "value": "A"
+                    },
+                    {
+                        "key": "Fixed",
+                        "value": "1"
+                    },
+                    {
+                        "key": "Current balance",
+                        "value": "10161"
+                    },
+                    {
+                        "key": "Original balance",
+                        "value": "000000"
+                    },
+                    {
+                        "key": "Credit limit",
+                        "value": "10161"
+                    }
+	  ],
+      "validationRules": [{
+        "id": "123",
+        "type": "data",
+        "name": "IO value can be 0 or 1 only",
+        "attribute": {
+			"key": "IO",
+			"value": "A"
+		},
+        "isFailed": "true",
+        "expression:": "0 or IO = 1\""
+      },
+	  {
+        "id": "123",
+        "type": "business",
+        "name": "Original balance cannot be 0",
+        "attribute": {
+			"key": "Original balance",
+			"value": "000000"
+		},
+        "isFailed": "true",
+        "expression:": "Original balance > 0"
+      },
+	  {
+        "id": "456",
+        "type": "business",
+        "name": "Original balance cannot be 0",
+        "attribute": {
+			"key": "Original balance",
+			"value": "000000"
+		},
+        "isFailed": "true",
+        "expression:": "Original balance > 0"
+      }
+	  ]
+    }
+  }
+}
